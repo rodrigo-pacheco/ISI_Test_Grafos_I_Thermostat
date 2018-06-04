@@ -20,19 +20,19 @@ class ThermostatTest {
 		t.up();
 		assertTrue("Falla el up",
 					t.PartOfDay == t.PartOfDay.Wake &&
-					t.getTemp   == t.Temp.High);
+					t.Temp		== t.Temp.High);
 		t.advance();
 		assertTrue("Falla el primer advance",
 					t.PartOfDay == t.PartOfDay.Sleep &&
-					t.getTemp   == t.Temp.High);
+					t.Temp   	== t.Temp.High);
 		t.down();
 		assertTrue("Falla el down",
 					t.PartOfDay == t.PartOfDay.Sleep &&
-					t.getTemp   == t.Temp.Low);
+					t.Temp   	== t.Temp.Low);
 		t.advance();
 		assertTrue("Falla el segundo advance",
-				t.PartOfDay == t.PartOfDay.Wake &&
-				   t.Temp 	   == t.Temp.Low);
+					t.PartOfDay == t.PartOfDay.Wake &&
+					t.Temp 	   == t.Temp.Low);
 	}
 	
 	// Wake-Low , Seep-Low , Sleep-High , Wake-High , Wake-Low 
@@ -44,23 +44,23 @@ class ThermostatTest {
 		
 		t.advance();
 		assertTrue("Falla el primer advance",
-					t.getPartOfDay() == PartOfDay.Sleep &&
-					t.getTemp() == Temp.High);
+					t.PartOfDay == PartOfDay.Sleep &&
+					t.Temp 		== Temp.Low);
 		
 		t.up();
 		assertTrue("Falla el up",
-					t.getPartOfDay() == PartOfDay.Wake &&
-					t.getTemp() == Temp.High);
+					t.PartOfDay == PartOfDay.Sleep &&
+					t.Temp 		== Temp.High);
 		
 		t.advance();
 		assertTrue("Falla el segundo advance",
-					t.getPartOfDay() == PartOfDay.Wake && 
-					t.getTemp() == Temp.Low);
+					t.PartOfDay == PartOfDay.Wake && 
+					t.Temp 		== Temp.High);
 		
 		t.down();
 		assertTrue("Falla el down",
-					t.getPartOfDay() == PartOfDay.Sleep &&
-					t.getTemp() == Temp.Low);
+					t.PartOfDay == PartOfDay.Wake &&
+					t.Temp 		== Temp.Low);
 	}
 
 }
