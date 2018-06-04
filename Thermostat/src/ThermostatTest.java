@@ -7,16 +7,17 @@ class ThermostatTest {
 
 	@Before
 	public void setUp() {
-		t.partOfDay = t.PartOfDay.Wake;
-		t.temperatura = t.Temp.Low;
+		t = new Thermostat();
+		t.partofday = Thermostat.PartOfDay.Wake;
+		t.temperature = Thermostat.Temp.Low;
 	}
 	
 	// Wake-Low , Wake-High , Sleep-High , Seep-Low , Wake-Low 
 	@Test
 	public void testPrimeraVuelta() {
 		assertTrue("Valores iniciales incorrectos",
-				   t.PartOfDay == t.PartOfDay.Wake &&
-				   t.Temp 	   == t.Temp.Low);
+				   t.partofday 	 == t.PartOfDay.Wake &&
+				   t.temperature == t.Temp.Low);
 		t.up();
 		assertTrue("Falla el up",
 					t.PartOfDay == t.PartOfDay.Wake &&
