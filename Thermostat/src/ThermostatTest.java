@@ -40,28 +40,28 @@ class ThermostatTest {
 	@Test
 	public void testSegundaVuelta() {
 		assertTrue("Valores iniciales incorrectos",
-				   t.PartOfDay == t.PartOfDay.Wake &&
-				   t.Temp 	   == t.Temp.Low);
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Wake &&
+				   	Thermostat.temperature == Thermostat.Temp.Low);
 		
-		t.advance();
+		Thermostat.advance();
 		assertTrue("Falla el primer advance",
-					t.PartOfDay == PartOfDay.Sleep &&
-					t.Temp 		== Temp.Low);
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Sleep &&
+				   	Thermostat.temperature == Thermostat.Temp.Low);
 		
-		t.up();
+		Thermostat.up();
 		assertTrue("Falla el up",
-					t.PartOfDay == PartOfDay.Sleep &&
-					t.Temp 		== Temp.High);
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Sleep &&
+				   	Thermostat.temperature == Thermostat.Temp.High);
 		
-		t.advance();
+		Thermostat.advance();
 		assertTrue("Falla el segundo advance",
-					t.PartOfDay == PartOfDay.Wake && 
-					t.Temp 		== Temp.High);
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Wake &&
+				   	Thermostat.temperature == Thermostat.Temp.High);
 		
-		t.down();
+		Thermostat.down();
 		assertTrue("Falla el down",
-					t.PartOfDay == PartOfDay.Wake &&
-					t.Temp 		== Temp.Low);
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Wake &&
+				   	Thermostat.temperature == Thermostat.Temp.Low);
 	}
 
 }
