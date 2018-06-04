@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -7,33 +8,32 @@ class ThermostatTest {
 
 	@Before
 	public void setUp() {
-		t = new Thermostat();
-		t.partofday = Thermostat.PartOfDay.Wake;
-		t.temperature = Thermostat.Temp.Low;
+		Thermostat.partofday = Thermostat.PartOfDay.Wake;
+		Thermostat.temperature = Thermostat.Temp.Low;
 	}
 	
 	// Wake-Low , Wake-High , Sleep-High , Seep-Low , Wake-Low 
 	@Test
 	public void testPrimeraVuelta() {
 		assertTrue("Valores iniciales incorrectos",
-				   t.partofday 	 == t.PartOfDay.Wake &&
-				   t.temperature == t.Temp.Low);
-		t.up();
+				   	Thermostat.partofday   == Thermostat.PartOfDay.Wake &&
+				   	Thermostat.temperature == Thermostat.Temp.Low);
+		Thermostat.up();
 		assertTrue("Falla el up",
-					t.PartOfDay == t.PartOfDay.Wake &&
-					t.Temp		== t.Temp.High);
-		t.advance();
+					Thermostat.partofday   == Thermostat.PartOfDay.Wake &&
+					Thermostat.temperature == Thermostat.Temp.High);
+		Thermostat.advance();
 		assertTrue("Falla el primer advance",
-					t.PartOfDay == t.PartOfDay.Sleep &&
-					t.Temp   	== t.Temp.High);
-		t.down();
+					Thermostat.partofday   == Thermostat.PartOfDay.Sleep &&
+					Thermostat.temperature == Thermostat.Temp.High);
+		Thermostat.down();
 		assertTrue("Falla el down",
-					t.PartOfDay == t.PartOfDay.Sleep &&
-					t.Temp   	== t.Temp.Low);
-		t.advance();
+					Thermostat.partofday == Thermostat.PartOfDay.Sleep &&
+					Thermostat.temperature   	 == Thermostat.Temp.Low);
+		Thermostat.advance();
 		assertTrue("Falla el segundo advance",
-					t.PartOfDay == t.PartOfDay.Wake &&
-					t.Temp 	   == t.Temp.Low);
+					Thermostat.partofday == Thermostat.PartOfDay.Wake &&
+					Thermostat.temperature 	 == Thermostat.Temp.Low);
 	}
 	
 	// Wake-Low , Seep-Low , Sleep-High , Wake-High , Wake-Low 

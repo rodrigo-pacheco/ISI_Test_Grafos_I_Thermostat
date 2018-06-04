@@ -10,21 +10,21 @@ public class Thermostat{
 	}
 	
 	static Temp temperature = Temp.Low;
-	static PartOfDay partofday = PartOfDay.Sleep;
+	static PartOfDay partofday = PartOfDay.Wake;
 	
-	public void up() {
+	public static void up() {
 		if (temperature == Temp.Low) {
 			temperature = Temp.High;
 		}
 	}
 	
-	public void down() {
+	public static void down() {
 		if(temperature == Temp.High) {
 			temperature = Temp.Low;
 		}
 	}
 	
-	public void advance(){
+	public static void advance(){
 		if(partofday == PartOfDay.Wake) {
 			partofday = PartOfDay.Sleep;
 		} else {
